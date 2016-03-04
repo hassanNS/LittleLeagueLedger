@@ -1,0 +1,93 @@
+.team-icon {
+	width: 25px;
+	height: 25px;
+}
+
+.jumbotron.team-info-bar {
+	display: flex;
+    width: 100%;
+}
+
+.title-top-players {
+	text-align: center;
+    padding-bottom: 10px;
+}
+
+span.label.label-info.title {
+	font-size: 15px;
+	display: initial;
+}
+
+.team-item1 {
+	float: left;
+	margin-left: -35px;
+	margin-top: -35px;
+}
+
+.top-players {
+	display: inline-flex;
+}
+
+.top-player {
+	text-align: center;
+	width: 125px;
+}
+
+.img-circle.player-pic {
+	width: 60px;
+	height: 60px;
+	margin-bottom: 5px;
+}
+
+.img-circle.player-pic.team {
+	margin-bottom: 5px;
+}
+
+span.label.label-success {
+	font-size: 15px;
+	margin-top: 2px;
+}
+
+span.label.player-name {
+	font-size: 15px;
+	color: darkblue;
+}
+
+.team-item2 {
+	width: 160px;
+	margin-left: 10%;
+	margin-top: -35px;
+}
+
+.next {
+	text-align: center;
+}
+
+
+.navbar-header.team-header {
+	display: inline-flex;
+}
+
+@media (min-width: 1200px)
+.container {
+	width: 1170px;
+}
+
+/* Buttons and button groups */
+.navbarLeft {
+	float: left;
+}
+
+.navbarMiddle {
+	padding-top: 5px;
+	margin-left: 45%;
+}
+
+.nav.navbar-right.sink {
+	width: 30%;
+	padding-top: 10px;
+}
+
+nav.navbar.navbar-default.team-navigation {
+	display: flex;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>LeagueManager John</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.css" rel="stylesheet">
+
+   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.min.css">
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.structure.css">
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../JS_LIBRARIES/handlebars-v4.0.5.js"></script>
+    <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+
+    <link href="../CSS/L-M-DashBoard.css" rel="stylesheet">
+</head>
+<body>
+  <nav class = "navbar navbar-default" role = "navigation">
+     <div class = "navbar-header" style="width:100%; text-align:center; padding: 10px;">
+      <a class = "navbar-brand" style="float:none;" href = "#">Little League Ledger</a>
+     </div>
+  </nav>
+
+  <!-- Container for profile pic and Button groups -->
+  <div class="container">
+    <div class="jumbotron vertical-center">
+      <img id="lm-icon"src = "../Static/user.jpg" class="img-circle profile-pic">
+      <p id="lm-name">Mr. John Doe<p>
+      <div class="lm-buttonGroup">
+        <button id="editstaff" class="btn btn-lg btn-default" type="submit">Edit Staff</button>
+        <button id="settings" class="btn btn-lg btn-default" type="submit">Settings</button>
+        <button id="logout" class="btn btn-lg btn-danger">Logout</button>
+        <button id="createteam" class= "btn btn-primary btn-lg" data-toggle="modal" data-target="#createTeamModal">Create New Team</button>
+        <button id="createleague" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#createLeagueModal">Create New League</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modals Create Team Form-->
+  <div class = "modal fade" id = "createTeamModal" role = "dialog" aria-labelledby ="createTeamModalLabel" aria-hidden = "true">
+   
+   <div class = "modal-dialog">
+      <div class = "modal-content">
+         <div class = "modal-header">
+            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;</button>
+            <center><h4 class = "modal-title" id = "myModalLabel">
+               Create New Team
+            </h4></center>
+         </div>
+         <div class = "modal-body">
+            <form id="createTeamForm" role="form">
+
+             <div class = "form-group">
+                <label for = "teamName">Team Name</label>
+                <input type = "text" class = "form-control" id = "teamName" placeholder = "Enter Name" required>
+                <label for="managerEmail">Manager Email</lable>
+                <input type = "email" class = "form-control" id = "managerEmail" placeholder = "Enter Manager Email" required>
+                <label for="managerEmail">Choose Team Color</lable>
+                <input type = "color" class = "form-control" id = "teamColor"required>
+             </div>
+
+             <div class = "modal-footer teamModalFooter">
+                <button type = "button" class = "btn btn-danger" data-dismiss = "modal">Discard</button>
+                <button id="submitTeam" type = "submit" class = "btn btn-primary">
+                   Create Team
+                </button>
+             </div>
+            </form>
+         </div><!-- /.modal-body -->
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+ </div><!-- /. modal -->
+
+<!-- Modals Create League Form-->
+<div class = "modal fade" id = "createLeagueModal" role = "dialog" aria-labelledby ="createTeamModalLabel" aria-hidden = "true">
+   <div class = "modal-dialog">
+      <div class = "modal-content">
+         <div class = "modal-header">
+            <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;</button>
+            <center><h4 class = "modal-title" id = "myModalLabel">
+               Create New League
+            </h4></center>
+         </div>
+         <div class = "modal-body">
+            <form id="createLeagueForm" role="form">
+             <div class = "form-group">
+                <label for = "leagueName">League Name</label>
+                <input type = "text" class = "form-control" id = "leagueName" placeholder = "Enter League Name" required>
+
+                <div id="selectTeamModal">
+                  <label for="managerEmail">Choose Teams</lable>
+                  <select multiple class="form-control" id="exampleSelect2">
+                    <option>Super Dukers</option>
+                    <option>Get Rekt Kids</option>
+                    <option>Clementon United</option>
+                    <option>Loser City</option>
+                    <option>Faze UpperCutters</option>
+                  </select>
+                  <div id="selectteam-group">
+                      <button class="btn btn-sm btn-default">
+                          <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                      </button>
+                      <button class="btn btn-sm btn-default">
+                          <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                      </button>
+                  </div>
+                  <label for="managerEmail">Teams in the League</lable>
+                  <select multiple class="form-control" id="exampleSelect2">
+                    <option>Super Dukers</option>
+                    <option>Get Rekt Kids</option>
+                    <option>Clementon United</option>
+                  </select>
+                </div>
+
+                <label for="playersPerTeam">Player Per Team</lable>
+                <input type = "number" class = "form-control" id = "playerPerTeam"required>
+
+                <label for="matchesPerTeam">Matches Per Team</lable>
+                <input type = "number" class = "form-control" id = "matchesPerTeam"required>
+              </br>
+                <label id="numGames">Total Games: 6 games</label>
+              </br>
+              </br>
+                <label for="leagueStartDate">Start Date</lable>
+                <input type = "date" class = "form-control" id = "leagueStartDate"required>
+                <label for="matchesEveryNDays">Matches every</lable>
+                <input type = "number" class = "form-control" id="matchesEveryNDays"required>
+                <label for="gameStartTime">Game Start Time</lable>
+                <input type = "time" class = "form-control" id="gameStartTime"required>
+             </div>
+
+             <div class = "modal-footer teamModalFooter">
+                <button type = "button" class = "btn btn-danger" data-dismiss = "modal">Discard</button>
+                <button id="submitTeam" type = "submit" class = "btn btn-primary">
+                   Create Team
+                </button>
+             </div>
+            </form>
+         </div><!-- /.modal-body -->
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+ </div><!-- /. modal -->
+ <!-- Handelbar.js templates for league items -->
+  <script id="league-item-template" type="text/x-handlebars-template"> 
+    {{#leagues}}
+      <div class="panel panel-primary vertical-center">
+        <div class="panel-heading">
+          <h2 class="panel-title">{{league_title}}</h2>
+        </div>
+        <div class="panel-body league-item">
+            <img id="lm-icon" src="../Static/league.png" class="img-circle profile-pic">
+            <div class="league-item-op">
+                <span class = "label label-info label-nextm">{{next_match}}</span>
+                <div class="l-panel-buttonGroup">
+                  <button id="update-view-stat" class="btn btn-sm btn-primary" type="submit">{{stat_status}}</button>
+                  <button id="edit-league" class="btn btn-sm btn-primary" type="submit">Edit</button>
+                  <button id="delete-league" class="btn btn-sm btn-primary">Delete</button>
+                </div>
+            </div>
+            <div class="league-top">
+              <div class="label-linfo"><span class = "label label-info">League Leader: {{top_team}}</span></div>
+              <div class="label-linfo"><span class = "label label-info">League Week: {{week_number}}</span></div>
+              <div class="label-linfo"><span class = "label label-info">Number of Teams: {{number_teams}}</span></div>
+            </div>
+        </div>
+      </div>
+    {{/leagues}}
+  </script>
+</body>
+<script type="text/javascript" src="../JS/LL.js"></script>
+</html>

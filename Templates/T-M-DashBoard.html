@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>LeagueManager John</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.css" rel="stylesheet">
+
+   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.min.css">
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.structure.css">
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../JS_LIBRARIES/handlebars-v4.0.5.js"></script>
+    <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+
+    <link href="../CSS/L-M-DashBoard.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/T-M-DashBoard.css">
+</head>
+<body>
+  <nav class = "navbar navbar-default team-navigation" role = "navigation">
+     <div class = "navbar-header team-header" style="width:100%; text-align:center; padding: 10px;">
+      
+      <div class="navbarLeft">
+        <button class="btn btn-sm btn-default backToDashBoard">
+          <span class="glyphicon glyphicon-chevron-left">Dashboard</span>
+        </button>
+      </div>
+
+      <div class="navbarMiddle">
+        <div>
+          <img id="lm-icon"src = "../Static/team.ico" class="img-circle team-icon">
+          <a class = "navbar-brand" style="float:none;" href = "#">Super Dukers</a>
+        </div>
+      </div>
+     </div> <!-- end header -->
+
+     <div class="nav navbar-right sink">
+      <div class="menuGroup">
+        <button class="btn btn-sm btn-default help">
+          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"> Help</span>
+        </button>
+        <button class="btn btn-sm btn-default settings">
+          <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Settings</span>
+        </button>
+        <button class="btn btn-sm btn-danger logout">
+          <span class="glyphicon glyphicon-off" aria-hidden="true"> Logout</span>
+        </button>
+      </div>
+     </div>
+  </nav>
+
+  <!-- Container for profile pic and Button groups -->
+  <div class="container">
+    <!-- This is where the info bar is -->
+    <div class="jumbotron team-info-bar">
+
+      <!-- Top players of the week display -->
+      <div class="team-item1">
+          <div class="title-top-players"><h3><span class = "label label-default title">Players of the Week</span></h3></div>
+          <div class="top-players">
+            <div class="top-player">
+                <span class="label player-name">#10 Gerrard</span>
+                <img id="lm-icon"src = "../Static/player.jpg" class="img-circle player-pic">
+                <span class="label label-success">Goals: 5</span>
+            </div>
+            <div class="top-player">
+                <span class="label player-name">#21 Cutinho</span>
+                <img id="lm-icon"src = "../Static/player_assist.jpg" class="img-circle player-pic">
+                <span class="label label-success">Assists: 3</span>
+            </div>
+            <div class="top-player">
+                <span class="label player-name">#1 Mignolet</span>
+                <img id="lm-icon"src = "../Static/player_golie.jpg" class="img-circle player-pic">
+                <span class="label label-success">Saves: 10</span>
+            </div>
+          </div>
+      </div>
+
+      <!-- Upcoming Match -->
+      <div class="team-item2">
+        <div class="title-top-players"><h3><span class = "label label-default title">Next Match</span></h3>
+        </div>
+        <div class="next">
+            <span class="label player-name">Arsenal (3rd)</span>
+            <img id="lm-icon"src = "../Static/upcoming-team.jpg" class="img-circle player-pic">
+            <span class = "label label-info">Sat, Feb 3rd, 2016</span>
+        </div>
+      </div> <!-- End -->
+    </div> <!-- Jumbotron -->
+
+    <!-- This is where the calendar stuff is -->
+    <div class="teamContainer">
+      <div class="teamInfo">
+
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="../JS/LL.js"></script>
+</html>

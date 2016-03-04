@@ -1,0 +1,79 @@
+img.img-circle.profile-pic {
+	width: 60px;
+	height: 60px;
+}
+
+.jumbotron.vertical-center{
+  width: 80%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+}
+
+.vertical-center{
+  width: 65%;
+  vertical-align: middle;
+  align-items: center;
+  margin-left: 17.5%;
+}
+
+/* Items */
+#lm-name {
+	margin-left: 1%;
+}
+
+.panel-body.league-item{
+	display: inline-flex;
+}
+
+/* Button Groups */
+button#createleague {
+    margin-top: 1%;
+}
+
+button#createteam {
+	margin-top: 1%;
+}
+
+button#editstaff {
+	margin-left: 30px;
+}
+
+.lm-buttonGroup {
+	margin-left: 10%;
+	width: 500px;
+}
+
+.l-panel-buttonGroup {
+	margin-left: 15px;
+	margin-top: 20px;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+	font-size: 15px;
+}
+
+#lm-name {
+	margin-left: 1%;
+}
+
+/* Labels */
+.label.label-info.label-nextm {
+	margin-left: 15px;
+	font-size: 15px;
+}
+
+.league-top {
+	width: 200px;
+	margin-left: 30px;
+}
+
+.label-linfo {
+	margin-bottom: 5px;
+}
+
+span.label.label-info {
+	font-size: 15px;
+	display: flex;
+}
