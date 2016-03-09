@@ -1,0 +1,72 @@
+.team-icon {
+	width: 25px;
+	height: 25px;
+}
+
+.jumbotron.team-info-bar {
+	display: flex;
+    width: 100%;
+}
+
+.title-top-players {
+	text-align: center;
+    padding-bottom: 10px;
+}
+
+span.label.label-info.title {
+	font-size: 15px;
+	display: initial;
+}
+
+
+.navbar-header.team-header {
+	display: inline-flex;
+}
+
+.team-list {
+	width: 250px;
+	margin-top: -30px;
+	text-align: center;
+}
+
+.league-table {
+	width: 500px;
+	margin-top: -30px;
+	margin-left: auto;
+	text-align: center;
+}
+
+.team-list-scroller {
+	height: 200px;
+	overflow: scroll;
+	border: solid;
+	background: white;
+}
+.btn.btn-default.team {
+	width: 200px;
+	margin-top: 20px;
+}
+
+@media (min-width: 1200px)
+.container {
+	width: 1170px;
+}
+
+/* Buttons and button groups */
+.navbarLeft {
+	float: left;
+}
+
+.navbarMiddle {
+	padding-top: 5px;
+	margin-left: 45%;
+}
+
+.nav.navbar-right.sink {
+	width: 30%;
+	padding-top: 10px;
+}
+
+nav.navbar.navbar-default.team-navigation {
+	display: flex;
+}

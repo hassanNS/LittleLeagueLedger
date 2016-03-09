@@ -55,7 +55,7 @@ span.label.player-name {
 
 .team-item2 {
 	width: 160px;
-	margin-left: 10%;
+	margin-left: auto;
 	margin-top: -35px;
 }
 
@@ -63,6 +63,20 @@ span.label.player-name {
 	text-align: center;
 }
 
+.team-item3{
+	margin-top: -35px;
+	margin-left: auto;
+}
+
+.overview {
+	display: inline-block;
+	padding: 0px 10px 0px 10px;
+}
+
+.label.label-info.info-item {
+	margin-bottom: 10px;
+	font-size: 19.5px;
+}
 
 .navbar-header.team-header {
 	display: inline-flex;

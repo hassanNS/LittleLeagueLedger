@@ -17,8 +17,9 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../JS_LIBRARIES/handlebars-v4.0.5.js"></script>
     <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
-
     <link href="../CSS/L-M-DashBoard.css" rel="stylesheet">
+    <script src="http://staticweb.cloudmine.me/cloudmine-0.9.12.min.js"></script>
+
 </head>
 <body>
   <nav class = "navbar navbar-default" role = "navigation">
@@ -67,7 +68,7 @@
 
              <div class = "modal-footer teamModalFooter">
                 <button type = "button" class = "btn btn-danger" data-dismiss = "modal">Discard</button>
-                <button id="submitTeam" type = "submit" class = "btn btn-primary">
+                <button id="submitTeam" type="button" class = "btn btn-primary">
                    Create Team
                 </button>
              </div>
@@ -95,26 +96,20 @@
 
                 <div id="selectTeamModal">
                   <label for="managerEmail">Choose Teams</lable>
-                  <select multiple class="form-control" id="exampleSelect2">
-                    <option>Super Dukers</option>
-                    <option>Get Rekt Kids</option>
-                    <option>Clementon United</option>
-                    <option>Loser City</option>
-                    <option>Faze UpperCutters</option>
+                  <select multiple class="form-control" id="unselectedTeams">
+                   
                   </select>
                   <div id="selectteam-group">
-                      <button class="btn btn-sm btn-default">
+                      <button id="toUnselectedTeams" class="btn btn-sm btn-default">
                           <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                       </button>
-                      <button class="btn btn-sm btn-default">
+                      <button id="toSelectedTeams"class="btn btn-sm btn-default">
                           <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                       </button>
                   </div>
                   <label for="managerEmail">Teams in the League</lable>
-                  <select multiple class="form-control" id="exampleSelect2">
-                    <option>Super Dukers</option>
-                    <option>Get Rekt Kids</option>
-                    <option>Clementon United</option>
+                  <select multiple class="form-control" id="selectedTeams">
+                    
                   </select>
                 </div>
 
@@ -124,7 +119,7 @@
                 <label for="matchesPerTeam">Matches Per Team</lable>
                 <input type = "number" class = "form-control" id = "matchesPerTeam"required>
               </br>
-                <label id="numGames">Total Games: 6 games</label>
+                <label id="numGames">Total Games: 0 games</label>
               </br>
               </br>
                 <label for="leagueStartDate">Start Date</lable>
@@ -137,8 +132,8 @@
 
              <div class = "modal-footer teamModalFooter">
                 <button type = "button" class = "btn btn-danger" data-dismiss = "modal">Discard</button>
-                <button id="submitTeam" type = "submit" class = "btn btn-primary">
-                   Create Team
+                <button id="submitLeague" type = "button" class = "btn btn-primary">
+                   Create League
                 </button>
              </div>
             </form>
@@ -147,26 +142,27 @@
    </div><!-- /.modal-dialog -->
  </div><!-- /. modal -->
  <!-- Handelbar.js templates for league items -->
+ <div class="league-items"></div>
   <script id="league-item-template" type="text/x-handlebars-template"> 
     {{#leagues}}
       <div class="panel panel-primary vertical-center">
-        <div class="panel-heading">
-          <h2 class="panel-title">{{league_title}}</h2>
+        <div id="league-item-heading" class="panel-heading" onClick="sendLeagueName( {{json name}} )">
+          <h2 class="panel-title">{{name}}</h2>
         </div>
         <div class="panel-body league-item">
             <img id="lm-icon" src="../Static/league.png" class="img-circle profile-pic">
             <div class="league-item-op">
-                <span class = "label label-info label-nextm">{{next_match}}</span>
+                <span class = "label label-info label-nextm">Next Match Day: {{next_match_day}}</span>
                 <div class="l-panel-buttonGroup">
-                  <button id="update-view-stat" class="btn btn-sm btn-primary" type="submit">{{stat_status}}</button>
+                  <button id="update-view-stat" class="btn btn-sm btn-primary" type="button">{{needs_updating}}</button>
                   <button id="edit-league" class="btn btn-sm btn-primary" type="submit">Edit</button>
                   <button id="delete-league" class="btn btn-sm btn-primary">Delete</button>
                 </div>
             </div>
             <div class="league-top">
-              <div class="label-linfo"><span class = "label label-info">League Leader: {{top_team}}</span></div>
-              <div class="label-linfo"><span class = "label label-info">League Week: {{week_number}}</span></div>
-              <div class="label-linfo"><span class = "label label-info">Number of Teams: {{number_teams}}</span></div>
+              <div class="label-linfo"><span class = "label label-info">League Leader: {{league_leader}}</span></div>
+              <div class="label-linfo"><span class = "label label-info">League Week: {{league_week}}</span></div>
+              <div class="label-linfo"><span class = "label label-info">Number of Teams: {{number_of_teams}}</span></div>
             </div>
         </div>
       </div>
@@ -174,4 +170,5 @@
   </script>
 </body>
 <script type="text/javascript" src="../JS/LL.js"></script>
+<script type="text/javascript" src="../JS/L-M-DashBoard.js"></script>
 </html>

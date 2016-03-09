@@ -17,24 +17,24 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../JS_LIBRARIES/handlebars-v4.0.5.js"></script>
     <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+    <script src="http://staticweb.cloudmine.me/cloudmine-0.9.12.min.js"></script>
 
     <link href="../CSS/L-M-DashBoard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../CSS/T-M-DashBoard.css">
-</head>
 <body>
   <nav class = "navbar navbar-default team-navigation" role = "navigation">
      <div class = "navbar-header team-header" style="width:100%; text-align:center; padding: 10px;">
       
       <div class="navbarLeft">
-        <button class="btn btn-sm btn-default backToDashBoard">
-          <span class="glyphicon glyphicon-chevron-left">Dashboard</span>
+        <button class="btn btn-sm btn-default backToDashBoard" onClick="parent.location='LeagueDisplay.html'">
+          <span class="glyphicon glyphicon-chevron-left">Back</span>
         </button>
       </div>
 
       <div class="navbarMiddle">
         <div>
           <img id="lm-icon"src = "../Static/team.ico" class="img-circle team-icon">
-          <a class = "navbar-brand" style="float:none;" href = "#">Super Dukers</a>
+          <a class = "navbar-brand" style="float:none;" href = "#">Liverpool</a>
         </div>
       </div>
      </div> <!-- end header -->
@@ -47,7 +47,7 @@
         <button class="btn btn-sm btn-default settings">
           <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Settings</span>
         </button>
-        <button class="btn btn-sm btn-danger logout">
+        <button class="btn btn-sm btn-danger logout" onClick="parent.location='../Home.html'">
           <span class="glyphicon glyphicon-off" aria-hidden="true"> Logout</span>
         </button>
       </div>
@@ -90,16 +90,157 @@
             <img id="lm-icon"src = "../Static/upcoming-team.jpg" class="img-circle player-pic">
             <span class = "label label-info">Sat, Feb 3rd, 2016</span>
         </div>
-      </div> <!-- End -->
+      </div> <!-- End Upcoming match -->
+
+      <!-- League Standing -->
+      <div class="team-item3">
+        <div class="title-top-players"><h3><span class = "label label-default title">League Standing</span></h3>
+        </div>
+        <div class="overview">
+          <div class="overview item">
+              <span class = "label label-info info-item">Wins: 1</span>
+              <span class = "label label-info info-item">Draws: 2</span>
+              <span class = "label label-info info-item">Losses: 1</span>
+          </div>
+          <div class="overview item">
+            <span class = "label label-info info-item">Points: 7</span>
+            <span class = "label label-info info-item">Position: 3</span>
+            <span class = "label label-info info-item">GD: +3</span>
+          </div>
+        </div><!-- End Overview -->
+      </div> <!-- End League Standing -->
     </div> <!-- Jumbotron -->
 
     <!-- This is where the calendar stuff is -->
     <div class="teamContainer">
+      <script id="team-roster-template" type="text/x-handlebars-template"> 
       <div class="teamInfo">
+        <ul class="nav nav-tabs">
+          <li id="calID"><a data-toggle="tab" href="#cal">Calendar</a></li>
+          <li id="rosterID" class="active"><a data-toggle="tab" href="#roster">Roster</a></li>
+          <li id="statID"><a data-toggle="tab" href="#stats">Player Stats</a></li>
+        </ul>
 
-      </div>
-    </div>
+        <!-- tabbed contents -->
+        <div class="tab-content">
+          <div id="cal" class="tab-pane fade">
+            <center><h3>Fixtures for 2016</h3></center>
+            <center><iframe src="https://calendar.google.com/calendar/embed?src=cjfsj20k6jha48hdefvea50mjc%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe></center>
+          </div>
+          <div id="roster" class="tab-pane fade in active">
+            <center><h3>Liverpool FC Team Roster</h3></center>
+            <center>
+            <table class = "table table-hover team-roster">
+             <caption>Liverpool</caption>
+               <thead>
+                  <tr>
+                     <th>Number</th>
+                     <th>Name</th>
+                     <th>Position</th>
+                     <th>Remove Player</th>
+                  </tr>
+               </thead>
+               
+               <tbody>
+               {{#players}}
+                  <tr id="{{id}}">
+                     <td>{{number}}</td>
+                     <td>{{first_name}} {{last_name}}</td>
+                     <td>{{position}}</td>
+                     <td>
+                      <button class="btn btn-default" onClick="deletePlayer({{id}})">
+                        <span class="glyphicon glyphicon-remove"></span>
+                      </button>
+                     </td>
+                  </tr>
+               {{/players}}
+               </tbody>
+              </table>
+            </center>
+              <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newplayerform">Add Player
+                  <span class="glyphicon glyphicon-plus"></span>
+              </button>
+
+              <!-- new player modal -->
+              <div class = "modal fade" id = "newplayerform" role = "dialog" aria-hidden = "true">
+   
+                 <div class = "modal-dialog">
+                    <div class = "modal-content">
+                       <div class = "modal-header">
+                          <button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">&times;</button>
+                          <center><h4 class = "modal-title" id = "myModalLabel">
+                             Add a new player
+                          </h4></center>
+                       </div>
+                       <div class = "modal-body">
+                          <form id="newplayerform" role="form">
+
+                           <div class = "form-group">
+                              <label for = "playername">Player Name</label>
+                              <input type = "text" class = "form-control" id = "pName" placeholder = "Enter Name" required>
+                              <label for="pNumber">Player Number</lable>
+                              <input type = "number" class = "form-control" id = "pNumber" placeholder = "1" required>
+                              <label for="pPosition">Player Position</lable>
+                              <input type = "text" class = "form-control" id = "pPosition" placeholder="Enter Position"required>
+                           </div>
+
+                           <div class = "modal-footer teamModalFooter">
+                              <button type = "button" class = "btn btn-danger" data-dismiss = "modal">Discard</button>
+                              <button id="submitTeam" type = "submit" class = "btn btn-primary">Add Player</button>
+                           </div>
+                          </form>
+                       </div><!-- /.modal-body -->
+                    </div><!-- /.modal-content -->
+                 </div><!-- /.modal-dialog -->
+              </div><!-- /. modal -->
+          </div>
+
+          <div id="stats" class="tab-pane fade">
+            <center>
+            <h3>Season Statistics</h3>
+            <table class = "table table-hover team-stats">
+             <caption>Liverpool</caption>
+               <thead>
+                  <tr>
+                     <th>Number</th>
+                     <th>Name</th>
+                     <th>Position</th>
+                     <th>Goals</th>
+                     <th>Shots</th>
+                     <th>Shots on Target</td>
+                     <th>Assists</th>
+                     <th>Saves</th>
+                     <th>Fouls</th>
+                     <th>Yellow Cards</th>
+                     <th>Red Cards</th>
+                  </tr>
+               </thead>
+               
+               <tbody>
+               {{#players}}
+                  <tr>
+                     <td>{{number}}</td>
+                     <td>{{first_name}} {{last_name}}</td>
+                     <td>{{position}}</td>
+                     <td>{{goals}}</td>
+                     <td>{{shots}}</td>
+                     <td>{{shots_on_target}}</td>
+                     <td>{{assists}}</td>
+                     <td>{{saves}}</td>
+                     <td>{{fouls}}</td>
+                     <td>{{yellow_card}}</td>
+                     <td>{{red_card}}</td>
+                  </tr>
+               {{/players}}
+               </tbody>
+              </table>
+            </center>
+          </div>
+        </div> <!-- end tab content -->
+      </div><!-- end teamInfo -->
+      </script>
+    </div> <!-- end Team Container -->
   </div>
 </body>
-<script type="text/javascript" src="../JS/LL.js"></script>
+<script type="text/javascript" src="../JS/T-M-DashBoard.js"></script>
 </html>

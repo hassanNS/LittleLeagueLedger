@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Update Stats</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/bootstrap.css" rel="stylesheet">
+
+   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.min.css">
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.structure.css">
+   <link rel="stylesheet" type="text/css" href="../jquery/jquery-ui.theme.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../JS_LIBRARIES/handlebars-v4.0.5.js"></script>
+    <script type="text/javascript" src="../bootstrap/bootstrap.min.js"></script>
+
+    <link href="../CSS/L-M-DashBoard.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../CSS/LeagueDisplay.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/UpdateStatsView.css">
+    <script src="http://staticweb.cloudmine.me/cloudmine-0.9.12.min.js"></script>
+
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+  <nav class = "navbar navbar-default team-navigation" role = "navigation">
+     <div class = "navbar-header team-header" style="width:100%; text-align:center; padding: 10px;">
+      
+      <div class="navbarLeft">
+        <button class="btn btn-sm btn-default backToDashBoard">
+          <span class="glyphicon glyphicon-chevron-left" onClick="parent.location='L-M-DashBoard.html'">Dashboard</span>
+        </button>
+      </div>
+
+      <div class="navbarMiddle">
+        <div>
+          <img id="lm-icon"src = "../Static/team.ico" class="img-circle team-icon">
+          <a class = "navbar-brand" style="float:none;" href = "#">Update Statistics</a>
+        </div>
+      </div>
+     </div> <!-- end header -->
+
+     <div class="nav navbar-right sink">
+      <div class="menuGroup">
+        <button class="btn btn-sm btn-default help">
+          <span class="glyphicon glyphicon-question-sign" aria-hidden="true"> Help</span>
+        </button>
+        <button class="btn btn-sm btn-default settings">
+          <span class="glyphicon glyphicon-wrench" aria-hidden="true"> Settings</span>
+        </button>
+        <button class="btn btn-sm btn-danger logout">
+          <span class="glyphicon glyphicon-off" aria-hidden="true"> Logout</span>
+        </button>
+      </div>
+     </div>
+  </nav> <!-- end nav -->
+  <!-- Container for profile pic and Button groups -->
+  <div class="stat-container">
+      <center>
+        <h2>
+          <span class = "label label-default">Liverpool vs West Ham United</span>
+        </h2>
+        <div class="final-score">
+          <div class="input-group1">
+            <span class="input-group-addon" id="basic-addon2">Goals</span>
+            <input type="number" class="form-control" placeholder="0" aria-describedby="basic-addon2">
+          </div>
+          <h4>  vs  </h4>
+          <div class="input-group2">
+            <span class="input-group-addon" id="basic-addon2">Goals</span>
+            <input type="number" class="form-control" placeholder="0" aria-describedby="basic-addon2">
+          </div>
+        </div>
+      </center>
+      <script id="update-stats-template1" type="text/x-handlebars-template"> 
+        <div id="team1Stats">
+              <table class = "table table-hover team-stats1">
+                 <h3><span class = "label label-default">{{team1}}</span></h3>
+                 <thead>
+                    <tr>
+                       <th>Number</th>
+                       <th>Name</th>
+                       <th>Position</th>
+                       <th>Goals</th>
+                       <th>Shots</th>
+                       <th>Shots on Target</td>
+                       <th>Assists</th>
+                       <th>Saves</th>
+                       <th>Fouls</th>
+                       <th>Yellow Cards</th>
+                       <th>Red Cards</th>
+                    </tr>
+                 </thead>
+                 
+                 <tbody>
+                 {{#liverpool_players}}
+                    <tr>
+                       <td>{{number}}</td>
+                       <td>{{first_name}} {{last_name}}</td>
+                       <td>{{position}}</td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} goals"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} shots"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} shots_on_target">
+                        </input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} assists"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} saves"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} fouls"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} yellow_card">
+                        </input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} red_card"></input>
+                       </td>
+                    </tr>
+                 {{/liverpool_players}}
+                 </tbody>
+                </table>
+        </div><!-- end stats -->
+      </script>
+      <script id="update-stats-template2" type="text/x-handlebars-template"> 
+        <div id="team2Stats">
+              <table class = "table table-hover team-stats2">
+                 <h3><span class = "label label-default">{{team2}}</span></h3>
+                 <thead>
+                    <tr>
+                       <th>Number</th>
+                       <th>Name</th>
+                       <th>Position</th>
+                       <th>Goals</th>
+                       <th>Shots</th>
+                       <th>Shots on Target</td>
+                       <th>Assists</th>
+                       <th>Saves</th>
+                       <th>Fouls</th>
+                       <th>Yellow Cards</th>
+                       <th>Red Cards</th>
+                    </tr>
+                 </thead>
+                 
+                 <tbody>
+                 {{#westham_players}}
+                    <tr>
+                       <td>{{number}}</td>
+                       <td>{{first_name}} {{last_name}}</td>
+                       <td>{{position}}</td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} goals"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} shots"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} shots_on_target">
+                        </input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} assists"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} saves"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} fouls"></input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} yellow_card">
+                        </input>
+                       </td>
+                       <td>
+                        <input type="number" id="inputstat" class="{{team}} red_card"></input>
+                       </td>
+                    </tr>
+                 {{/westham_players}}
+                 </tbody>
+                </table>
+
+
+      <center>
+      <div class="control-button-group">
+          <button class="btn btn-lg btn-default">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            Back
+          </button>
+          <button class="btn btn-lg btn-primary">
+            Save and Close
+            <span class="glyphicon glyphicon-ok-sign"></span>
+          </button>
+          <button class="btn btn-lg btn-primary">
+            Save
+            <span class="glyphicon glyphicon-floppy-disk"></span>
+          </button>
+          <button class="btn btn-lg btn-default">
+            Next
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </button>
+      </div>
+      <div ="updates-left">
+        <span class="glyphicon glyphicon-record"></span>
+        <span class="glyphicon glyphicon-unchecked"></span>
+        <span class="glyphicon glyphicon-unchecked"></span>
+        <span class="glyphicon glyphicon-unchecked"></span>
+      </div>
+      </center>
+        </div><!-- end stats -->
+      </script>
+  </div> <!-- end container -->
+</body>
+<script type="text/javascript" src="../JS/UpdateStatsView.js"></script>
+</html>

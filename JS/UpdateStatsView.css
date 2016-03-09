@@ -1,0 +1,8 @@
+.stat-container {
+	width: auto;
+	margin-left: 15px;
+}
+
+input#inputstat {
+	width: 60px;
+}

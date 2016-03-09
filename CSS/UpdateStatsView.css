@@ -1,0 +1,18 @@
+.stat-container {
+	width: auto;
+	margin-left: 15px;
+}
+
+input#inputstat {
+	width: 50px;
+}
+
+.final-score {
+	display: inline-flex;
+	width: 200px;
+}
+
+.input-group {
+	margin-left: 10px;
+	margin-right: 10px;
+}
