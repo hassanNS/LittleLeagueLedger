@@ -1,0 +1,60 @@
+#richtext {
+    position: absolute;
+    background: rgba(251, 251, 251, 0);
+    opacity: 0.6;
+    z-index: 50;
+    width: 100%;
+    max-width: 33em;
+    font-size: 30px;
+    resize: none;
+    border: 0;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+#text {
+    background: rgba(230, 230, 230, 0);
+    opacity: 0.9;
+    z-index: 50;
+    width: 100%;
+    max-width: 33em;
+    font-size: 20px;
+    resize: none;
+    border: 0;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #0333;
+}
+
+.notebook_img {
+    height: 50px;
+    width: 50px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+#inputEmail {
+    margin-bottom: 5px;
+}
+
+#inputPassword {
+    margin-bottom: 5px;
+}
+
+.button-form {
+    display: inline-block;
+}
+.login-button {
+    float: left;
+}
